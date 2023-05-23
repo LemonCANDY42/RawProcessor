@@ -12,7 +12,7 @@ import numpy as np
 if __name__ == "__main__":
 
 	# 读入图片：默认彩色图，cv2.IMREAD_GRAYSCALE灰度图，cv2.IMREAD_UNCHANGED包含alpha通道
-	path = "/Users/kennymccormick/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/83fca783a6b126dc3ae61fdd7d0090ea/Message/MessageTemp/6f800cc992ac371b552ced4d7b07c850/File/2018-03-04/09_05_19_277.png"
+	path = "/Users/kennymccormick/Downloads/WXWork Files/Caches/Images/2023-05/ea15bcfa32877b352cc2e00e6eb420a2_HD/1656507331715334146.jpg"
 	plt.figure('图片显示')
 	img = cv2.imread(path, cv2.CV_16UC1)
 	print(img.dtype)

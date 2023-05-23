@@ -80,4 +80,4 @@ def filetype(filename):
 
 if __name__ == '__main__':
 	print(filetype(
-		"/Users/kennymccormick/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/83fca783a6b126dc3ae61fdd7d0090ea/Message/MessageTemp/6f800cc992ac371b552ced4d7b07c850/File/1626860989494861826.png"))
+		"/Users/kennymccormick/Downloads/1628676275407691777.jpg"))
