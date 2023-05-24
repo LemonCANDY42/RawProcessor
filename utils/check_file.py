@@ -79,5 +79,10 @@ def filetype(filename):
 
 
 if __name__ == '__main__':
-	print(filetype(
-		"/Users/kennymccormick/Downloads/1628676275407691777.jpg"))
+	from pathlib import Path
+	from utils.ergodic_process_files import process_folder
+
+	# 调用函数，处理指定文件夹
+	folder_path = Path('/Users/kennymccormick/Downloads/20230524')
+	result = process_folder(folder_path, ".jpg", filetype)
+	print(result)

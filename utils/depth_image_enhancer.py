@@ -9,6 +9,7 @@ import imageio
 import numpy as np
 import cv2
 from pathlib import Path # 导入pathlib模块
+from utils.ergodic_process_files import process_folder
 
 # 定义参数
 min_depth = 1000 # 深度数据的最小值
@@ -21,6 +22,7 @@ random_point = True
 def process_file(filepath):
     # 读取png文件，并转换为numpy数组
     img = imageio.v2.imread(filepath)
+
 
     if random_point:
         # 找到数组中数值为0的位置
@@ -54,20 +56,19 @@ def process_file(filepath):
     return img
 
 # 定义一个函数，用于遍历指定文件夹并重复上述操作
-def process_folder(folder):
-    # 遍历文件夹中的所有png文件
-    for filename in folder.iterdir(): # 使用Path对象的iterdir方法来遍历目录下的文件和子目录
-        if filename.suffix == '.png': # 使用Path对象的suffix属性来获取文件后缀名
-            # 处理单个文件，并得到处理后的数组
-            img = process_file(filename)
-            # 保存处理后的文件到另一个文件夹（假设是'processed_images'）
-            new_folderpath = folder / 'processed_images'
-            new_folderpath.mkdir(parents=False, exist_ok=True)
-            file_prexif = 'enhancer'
-            new_filepath = new_folderpath / new_folderpath.joinpath(f'{file_prexif}_{filename.name}') # 使用Path对象的/运算符来拼接路径
+def process_png(filename,folder):
 
-            imageio.imwrite(new_filepath, img)
+        img = process_file(filename)
+
+        # 保存处理后的文件到另一个文件夹（假设是'processed_images'）
+        new_folderpath = folder / 'processed_images'
+        new_folderpath.mkdir(parents=False, exist_ok=True)
+        file_prexif = 'enhancer'
+        new_filepath = new_folderpath / new_folderpath.joinpath(f'{file_prexif}_{filename.name}') # 使用Path对象的/运算符来拼接路径
+
+        imageio.imwrite(new_filepath, img)
 
 if __name__ == "__main__":
     # 调用函数，处理指定文件夹
-    process_folder(Path('/Users/kennymccormick/Downloads/煤坑测高识别'))
+    folder_path = Path('/Users/kennymccormick/Downloads/20230524')
+    process_folder(folder_path,".jpg",process_png,func_args={"folder":folder_path})
